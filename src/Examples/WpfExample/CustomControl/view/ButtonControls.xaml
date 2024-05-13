@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="FiberPullStrain.CustomControl.view.ButtonControls"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FiberPullStrain.CustomControl.view"
+             xmlns:ClearableTextBox="clr-namespace:FiberPullStrain.CustomControl.view"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+            <RowDefinition Height="55"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btStart" Background="Transparent" Margin="3" BorderBrush="Orange" BorderThickness="1"
+                FontSize="60" Click="btStart_Click">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsRunning}" Value="True">
+                            <Setter Property="Content" Value="Stop"/>
+                            <Setter Property="Foreground" Value="Red"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsRunning}" Value="False">
+                            <Setter Property="Content" Value="Start"/>
+                            <Setter Property="Foreground" Value="LightSeaGreen"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="Exit" Background="Transparent" Grid.Row="3" Margin="3" BorderBrush="Orange" BorderThickness="1"
+                Foreground="Gray"  Content="Exit" FontSize="33"
+                Height="45" VerticalAlignment="Bottom" Click="Exit_Click"/>
+        <Border Grid.Row="1" BorderBrush="Orange" BorderThickness="2"  Margin="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Label Content="Set Items" Foreground="Gray" FontSize="25" HorizontalAlignment="Center"
+                   Height="40" VerticalAlignment="Top">
+                </Label>
+
+                <ClearableTextBox:ClearableTextBox x:Name="inBoxDistance" Grid.Row="1" BoundText="Input Distance">
+
+                </ClearableTextBox:ClearableTextBox>
+                <CheckBox x:Name="cbmm" Grid.Row="2" Content="mm" Foreground="Gray" FontSize="20"
+                          HorizontalAlignment="Center" VerticalContentAlignment="Center"
+                          IsChecked="True" Click="cbmm_Click"/>
+                <CheckBox x:Name="cbinch" Grid.Row="3" Content="inch" Foreground="Gray" FontSize="20"
+                          HorizontalAlignment="Center" VerticalContentAlignment="Center"
+                          Click="cbinch_Click"/>
+                <ClearableTextBox:ClearableTextBox x:Name="inBoxForce" Grid.Row="4" BoundText="Input Force">
+                    
+                </ClearableTextBox:ClearableTextBox>
+                                                   
+                <CheckBox x:Name="cbgrams" Grid.Row="5" Content="grams" Foreground="Gray" FontSize="20"
+                          HorizontalAlignment="Center" VerticalContentAlignment="Center"
+                          IsChecked="true" Click="cbgrams_Click"/>
+                <CheckBox x:Name="cbnewton" Grid.Row="8" Content="Newton" Foreground="Gray" FontSize="20"
+                          HorizontalAlignment="Center" VerticalContentAlignment="Center" Click="cbnewton_Click" />
+
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

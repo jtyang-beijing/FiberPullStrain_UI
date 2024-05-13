@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{3F6947C8-78F2-4A44-9B55-84EE40D7AFA7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GLGraphs", "src\GLGraphs\GLGraphs.csproj", "{F85268CA-9372-4743-A00C-F03C38D1A7D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{13CF7B75-D2DC-4403-9A6A-2DCB7F6BCBFF}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fiber", "Fiber", "{F4C88048-4A75-4069-A0EB-92ADD2C3DC58}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScatterGraph", "src\Examples\ScatterGraph\ScatterGraph.csproj", "{2F627AFD-746F-44FB-A236-D951833921A9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GLGraphs.Wpf", "src\GLGraphs.Wpf\GLGraphs.Wpf.csproj", "{080B02BA-705D-47DB-8943-9C6662C4E3ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FiberPullStrain", "src\Examples\WpfExample\FiberPullStrain.csproj", "{06C7B9D7-DD80-4F26-B7C6-3D31D22DA40F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F6947C8-78F2-4A44-9B55-84EE40D7AFA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F6947C8-78F2-4A44-9B55-84EE40D7AFA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F85268CA-9372-4743-A00C-F03C38D1A7D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F85268CA-9372-4743-A00C-F03C38D1A7D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F85268CA-9372-4743-A00C-F03C38D1A7D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F85268CA-9372-4743-A00C-F03C38D1A7D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F627AFD-746F-44FB-A236-D951833921A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F627AFD-746F-44FB-A236-D951833921A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F627AFD-746F-44FB-A236-D951833921A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F627AFD-746F-44FB-A236-D951833921A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{080B02BA-705D-47DB-8943-9C6662C4E3ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{080B02BA-705D-47DB-8943-9C6662C4E3ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{080B02BA-705D-47DB-8943-9C6662C4E3ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{080B02BA-705D-47DB-8943-9C6662C4E3ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06C7B9D7-DD80-4F26-B7C6-3D31D22DA40F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06C7B9D7-DD80-4F26-B7C6-3D31D22DA40F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06C7B9D7-DD80-4F26-B7C6-3D31D22DA40F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06C7B9D7-DD80-4F26-B7C6-3D31D22DA40F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2F627AFD-746F-44FB-A236-D951833921A9} = {F4C88048-4A75-4069-A0EB-92ADD2C3DC58}
+		{06C7B9D7-DD80-4F26-B7C6-3D31D22DA40F} = {F4C88048-4A75-4069-A0EB-92ADD2C3DC58}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F62DA7B5-EE40-4A45-ACF8-30660D719F9A}
+	EndGlobalSection
+EndGlobal
