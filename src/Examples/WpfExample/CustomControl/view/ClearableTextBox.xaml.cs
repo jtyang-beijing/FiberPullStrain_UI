@@ -13,6 +13,10 @@ namespace FiberPullStrain.CustomControl.view
             DataContext = this;
             InitializeComponent();
         }
+        
+        /*
+         Serve for value range limitation
+         */
         public string MinValue
         {
             get { return GetValue(MinValueProperty).ToString(); }
@@ -21,7 +25,7 @@ namespace FiberPullStrain.CustomControl.view
 
         public static readonly DependencyProperty MinValueProperty =
             DependencyProperty.Register("MinValue", typeof(string), 
-                typeof(ClearableTextBox), new PropertyMetadata("0"));
+                typeof(ClearableTextBox), new PropertyMetadata("0"));// default value set to string "0"
 
         public string MaxValue
         {
@@ -31,10 +35,12 @@ namespace FiberPullStrain.CustomControl.view
 
         public static readonly DependencyProperty MaxValueProperty =
             DependencyProperty.Register("MaxValue", typeof(string), 
-                typeof(ClearableTextBox), new PropertyMetadata("100"));
+                typeof(ClearableTextBox), new PropertyMetadata("100"));// default value set to string "100"
+
+        //-------------------------------------------------------
 
         public event PropertyChangedEventHandler PropertyChanged;
-
+        // bount text for text block - place holder text
         private string tblbountText;
         public string tblBoundText
         {
@@ -45,7 +51,7 @@ namespace FiberPullStrain.CustomControl.view
                 OnPropertyChanged();
             }
         }
-
+        // bount text for text input box
         private string tbbountText;
         public string tbBoundText
         {
@@ -64,7 +70,9 @@ namespace FiberPullStrain.CustomControl.view
         }
 
         private void inputBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        {   /* dealing with place holder text. show when no inputs to text box
+             * hide when input detected.
+            */
             if(string.IsNullOrEmpty(inputBox.Text))
             {
                 tbPlaceHolder.Visibility = System.Windows.Visibility.Visible;
@@ -77,6 +85,9 @@ namespace FiberPullStrain.CustomControl.view
                     inputBox.Text="Invalid";
                 }
             }
+            /*
+             * dealing with value range limit.
+             */
             if (float.TryParse(inputBox.Text, out float value))
             {
                 if (value < float.Parse(MinValue))
@@ -92,6 +103,9 @@ namespace FiberPullStrain.CustomControl.view
             }
         }
 
+        /* method to execute when setter of a control setting new value
+         * 
+         */
         private void OnPropertyChanged([CallerMemberName]  string propertyName = null) 
         {
             PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));

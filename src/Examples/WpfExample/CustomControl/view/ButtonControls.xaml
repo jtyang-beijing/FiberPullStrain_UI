@@ -51,8 +51,7 @@
                    Height="40" VerticalAlignment="Top"/>
 
                 <ClearableTextBox:ClearableTextBox x:Name="inBoxDistance" Grid.Row="1" 
-                                                   tblBoundText="Input Distance"
-                                                   MaxValue="1000" MinValue="0"/>
+                                                   tblBoundText="Input Distance"/>
                 <Button x:Name="btnDistanceSetOrigin" Grid.Row="2" Content="Set Origin" Background="Transparent" 
                         Foreground="Gray" FontSize="20" Click="btnDistanceSetOrigin_Click"/>
                 <CheckBox x:Name="cbmm" Grid.Row="3" Content="mm" Foreground="Gray" FontSize="20"
@@ -62,8 +61,7 @@
                           HorizontalAlignment="Center" VerticalContentAlignment="Center"
                           Click="cbinch_Click"/>
                 <ClearableTextBox:ClearableTextBox x:Name="inBoxForce" Grid.Row="5" 
-                                                   tblBoundText="Input Force"
-                                                   MaxValue="500" MinValue="0"/>
+                                                   tblBoundText="Input Force"/>
                 <Button x:Name="btnForceSetOrigin" Grid.Row="6" Content="Set Origin" Background="Transparent" 
                         Foreground="Gray" FontSize="20" Click="btnForceSetOrigin_Click"/>
                 <CheckBox x:Name="cbgrams" Grid.Row="7" Content="grams" Foreground="Gray" FontSize="20"

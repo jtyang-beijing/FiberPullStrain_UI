@@ -12,11 +12,14 @@ namespace FiberPullStrain.CustomControl.view
 {
     public partial class ButtonControls : UserControl, INotifyPropertyChanged
     {
-
+        PublicVars publicVars = new PublicVars();
         public ButtonControls()
         {
             DataContext = this;
             InitializeComponent();
+            // initialized max value of input box. 
+            inBoxDistance.MaxValue = publicVars.MAX_VALUE_DISTANCE;
+            inBoxForce.MaxValue = publicVars.MAX_VALUE_FORCE;
         }
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
@@ -34,7 +37,6 @@ namespace FiberPullStrain.CustomControl.view
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs("IsRunning"));
             }
         }
-
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -63,11 +65,14 @@ namespace FiberPullStrain.CustomControl.view
             {
                 if (cbmm.IsChecked == true)
                 {
-                    inBoxDistance.tbBoundText = (ss * (Decimal)2.54).ToString("F2");
+                    inBoxDistance.MaxValue = publicVars.MAX_VALUE_DISTANCE;
+                    inBoxDistance.tbBoundText = (ss * publicVars.DISTANCE_EXCHANGE_RATE).ToString("F2");
                 }
                 else
                 {
-                    inBoxDistance.tbBoundText = (ss / (Decimal)2.54).ToString("F2");
+                    inBoxDistance.MaxValue = (Decimal.Parse(publicVars.MAX_VALUE_DISTANCE) /
+                        publicVars.DISTANCE_EXCHANGE_RATE ).ToString("F2");
+                    inBoxDistance.tbBoundText = (ss / publicVars.DISTANCE_EXCHANGE_RATE).ToString("F2");
                 }
             }
         }
@@ -80,11 +85,14 @@ namespace FiberPullStrain.CustomControl.view
             {
                 if (cbinch.IsChecked == true)
                 {
-                    inBoxDistance.tbBoundText = (ss / (Decimal)2.54).ToString("F2");
+                    inBoxDistance.MaxValue = (Decimal.Parse(publicVars.MAX_VALUE_DISTANCE) /
+                        publicVars.DISTANCE_EXCHANGE_RATE).ToString("F2");
+                    inBoxDistance.tbBoundText = (ss / publicVars.DISTANCE_EXCHANGE_RATE).ToString("F2");
                 }
                 else
                 {
-                    inBoxDistance.tbBoundText = (ss * (Decimal)2.54).ToString("F2");
+                    inBoxDistance.MaxValue = publicVars.MAX_VALUE_DISTANCE;
+                    inBoxDistance.tbBoundText = (ss * publicVars.DISTANCE_EXCHANGE_RATE).ToString("F2");
                 }
             }
 
@@ -98,11 +106,14 @@ namespace FiberPullStrain.CustomControl.view
             {
                 if (cbgrams.IsChecked == true)
                 {
-                    inBoxForce.tbBoundText = (ss * (Decimal)101.971621).ToString("F2");
+                    inBoxForce.MaxValue = publicVars.MAX_VALUE_FORCE;
+                    inBoxForce.tbBoundText = (ss * publicVars.FORCE_EXCHANGE_RATE).ToString("F2");
                 }
                 else
                 {
-                    inBoxForce.tbBoundText = (ss / (Decimal)101.971621).ToString("F2");
+                    inBoxForce.MaxValue = (Decimal.Parse(publicVars.MAX_VALUE_FORCE) /
+                        publicVars.FORCE_EXCHANGE_RATE).ToString("F2");
+                    inBoxForce.tbBoundText = (ss / publicVars.FORCE_EXCHANGE_RATE).ToString("F2");
                 }
             }
         }
@@ -115,11 +126,14 @@ namespace FiberPullStrain.CustomControl.view
             {
                 if (cbnewton.IsChecked == true)
                 {
-                    inBoxForce.tbBoundText = (ss / (Decimal)101.971621).ToString("F2");
+                    inBoxForce.MaxValue = (Decimal.Parse(publicVars.MAX_VALUE_FORCE) /
+                        publicVars.FORCE_EXCHANGE_RATE).ToString("F2");
+                    inBoxForce.tbBoundText = (ss / publicVars.FORCE_EXCHANGE_RATE).ToString("F2");
                 }
                 else
                 {
-                    inBoxForce.tbBoundText = (ss * (Decimal)101.971621).ToString("F2");
+                    inBoxForce.MaxValue = publicVars.MAX_VALUE_FORCE;
+                    inBoxForce.tbBoundText = (ss * publicVars.FORCE_EXCHANGE_RATE).ToString("F2");
                 }
             }
         }
