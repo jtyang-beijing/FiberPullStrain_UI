@@ -9,9 +9,12 @@
     <Grid>
         <TextBox x:Name="inputBox" Background="Transparent"
                  Foreground="OrangeRed" FontSize="40" VerticalContentAlignment="Center"
-                 HorizontalContentAlignment="Center" TextChanged="inputBox_TextChanged"
-                 
-                 Text="{Binding tbBoundText, UpdateSourceTrigger=PropertyChanged}">
+                 HorizontalContentAlignment="Center" 
+                 Text="{Binding tbBoundText, UpdateSourceTrigger=PropertyChanged}"
+                 TextChanged="inputBox_TextChanged"
+                 PreviewTextInput="inputBox_PreviewTextInput"
+                 PreviewKeyDown="inputBox_PreviewKeyDown"
+                 DataObject.Pasting="inputBox_Pasting">
             
         </TextBox>
         <TextBlock x:Name="tbPlaceHolder" Text="{Binding tblBoundText, UpdateSourceTrigger=PropertyChanged}" 
