@@ -14,6 +14,8 @@
             <MenuItem Header="File" Margin="5">
                 <MenuItem Header="Open" Margin="5"
                           Background="Transparent" Foreground="Black"/>
+                <MenuItem Header="Close" Margin="5"
+                          Background="Transparent" Foreground="Black"/>
                 <MenuItem Header="Save"  Margin="5"
                           Background="Transparent" Foreground="Black"/>
                 <MenuItem Header="Save as"  Margin="5"

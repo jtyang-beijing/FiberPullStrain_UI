@@ -1,5 +1,6 @@
 ﻿using Fiber.ScatterGraph;
 using FiberPull;
+using OpenTK.Graphics.OpenGL;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -57,21 +58,80 @@ namespace FiberPullStrain.CustomControl.view
         private void cbmm_Click(object sender, RoutedEventArgs e)
         {
             cbinch.IsChecked = !cbinch.IsChecked;
+            bool ok = Decimal.TryParse(inBoxDistance.tbBoundText, out Decimal ss);
+            if (ok) 
+            {
+                if (cbmm.IsChecked == true)
+                {
+                    inBoxDistance.tbBoundText = (ss * (Decimal)2.54).ToString("F2");
+                }
+                else
+                {
+                    inBoxDistance.tbBoundText = (ss / (Decimal)2.54).ToString("F2");
+                }
+            }
         }
 
         private void cbinch_Click(object sender, RoutedEventArgs e)
         {
             cbmm.IsChecked = !cbmm.IsChecked;
+            bool ok = Decimal.TryParse(inBoxDistance.tbBoundText, out Decimal ss);
+            if(ok)
+            {
+                if (cbinch.IsChecked == true)
+                {
+                    inBoxDistance.tbBoundText = (ss / (Decimal)2.54).ToString("F2");
+                }
+                else
+                {
+                    inBoxDistance.tbBoundText = (ss * (Decimal)2.54).ToString("F2");
+                }
+            }
+
         }
 
         private void cbgrams_Click(object sender, RoutedEventArgs e)
         {
             cbnewton.IsChecked = ! cbnewton.IsChecked;
+            bool ok = Decimal.TryParse(inBoxForce.tbBoundText, out Decimal ss);
+            if(ok)
+            {
+                if (cbgrams.IsChecked == true)
+                {
+                    inBoxForce.tbBoundText = (ss * (Decimal)101.971621).ToString("F2");
+                }
+                else
+                {
+                    inBoxForce.tbBoundText = (ss / (Decimal)101.971621).ToString("F2");
+                }
+            }
         }
 
         private void cbnewton_Click(object sender, RoutedEventArgs e)
         {
             cbgrams.IsChecked = !cbgrams.IsChecked;
+            bool ok = Decimal.TryParse(inBoxForce.tbBoundText, out Decimal ss);
+            if(ok)
+            {
+                if (cbnewton.IsChecked == true)
+                {
+                    inBoxForce.tbBoundText = (ss / (Decimal)101.971621).ToString("F2");
+                }
+                else
+                {
+                    inBoxForce.tbBoundText = (ss * (Decimal)101.971621).ToString("F2");
+                }
+            }
+        }
+
+        private void btnDistanceSetOrigin_Click(object sender, RoutedEventArgs e)
+        {
+            inBoxDistance.tbBoundText = "0.00";
+        }
+
+        private void btnForceSetOrigin_Click(object sender, RoutedEventArgs e)
+        {
+            inBoxForce.tbBoundText = "0.00";
         }
     }
 }

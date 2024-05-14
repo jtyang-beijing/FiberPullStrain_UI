@@ -9,10 +9,12 @@
     <Grid>
         <TextBox x:Name="inputBox" Background="Transparent"
                  Foreground="OrangeRed" FontSize="40" VerticalContentAlignment="Center"
-                 HorizontalContentAlignment="Center" TextChanged="inputBox_TextChanged">
+                 HorizontalContentAlignment="Center" TextChanged="inputBox_TextChanged"
+                 
+                 Text="{Binding tbBoundText, UpdateSourceTrigger=PropertyChanged}">
             
         </TextBox>
-        <TextBlock x:Name="tbPlaceHolder" Text="{Binding BoundText, UpdateSourceTrigger=PropertyChanged}" 
+        <TextBlock x:Name="tbPlaceHolder" Text="{Binding tblBoundText, UpdateSourceTrigger=PropertyChanged}" 
                    Foreground="Gray" 
                    VerticalAlignment="Center" FontSize="20" Margin="5,0,0,0">
             

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Controls;
 namespace FiberPullStrain.CustomControl.view
 {
@@ -10,20 +11,29 @@ namespace FiberPullStrain.CustomControl.view
             InitializeComponent();
         }
 
-        private string bountText;
-
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string BoundText
+        private string tblbountText;
+        public string tblBoundText
         {
-            get { return bountText; }
+            get { return tblbountText; }
             set 
             { 
-                bountText = value; 
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs("BoundText"));
+                tblbountText = value; 
+                OnPropertyChanged();
             }
         }
 
+        private string tbbountText;
+        public string tbBoundText
+        {
+            get { return tbbountText; }
+            set
+            {
+                tbbountText = value;
+                OnPropertyChanged();
+            }
+        }
 
         private void btnClear_Click(object sender, System.Windows.RoutedEventArgs e)
         {
@@ -41,6 +51,11 @@ namespace FiberPullStrain.CustomControl.view
             {
                 tbPlaceHolder.Visibility = System.Windows.Visibility.Hidden;
             }
+        }
+
+        private void OnPropertyChanged([CallerMemberName]  string propertyName = null) 
+        {
+            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
