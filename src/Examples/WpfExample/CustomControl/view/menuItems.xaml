@@ -12,19 +12,24 @@
         </Grid.RowDefinitions>
         <Menu Background="Transparent" Foreground="White" FontSize="20">
             <MenuItem Header="File" Margin="5">
-                <MenuItem Header="Open" Margin="5"
+                <MenuItem x:Name="mnOpen" Header="Open" Margin="5"
                           Background="Transparent" Foreground="Black"/>
-                <MenuItem Header="Close" Margin="5"
+                <MenuItem x:Name="mnClose" Header="Close" Margin="5"
                           Background="Transparent" Foreground="Black"/>
-                <MenuItem Header="Save"  Margin="5"
+                <MenuItem x:Name="mnSave" Header="Save"  Margin="5"
                           Background="Transparent" Foreground="Black"/>
-                <MenuItem Header="Save as"  Margin="5"
+                <MenuItem x:Name="mnSaveAs" Header="Save as"  Margin="5"
                           Background="Transparent" Foreground="Black"/>
-                <MenuItem Header="Exit"  Margin="5" Click="MenuItem_Click"
+                <MenuItem x:Name="mnExit" Header="Exit"  Margin="5" Click="mnExit_Click"
                           Background="Transparent" Foreground="Black"/>
             </MenuItem>
-            <MenuItem Header="Setup" Margin="5"/>
-            <MenuItem Header="About" Margin="5" />
+            <MenuItem Header="Setup" Margin="5">
+                <MenuItem x:Name="mnSearch" Header="Search Stage" Margin="5"
+                          Background="Transparent" Foreground="Black"/>
+                <MenuItem x:Name="mnSystemSetup" Header="System Setup" Margin="5"
+                          Background="Transparent" Foreground="Black"/>
+            </MenuItem>
+            <MenuItem x:Name="mnAbout" Header="About" Margin="5" Click="mnAbout_Click"/>
         </Menu>
 
     </Grid>
