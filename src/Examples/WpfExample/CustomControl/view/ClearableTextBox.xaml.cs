@@ -13,6 +13,25 @@ namespace FiberPullStrain.CustomControl.view
             DataContext = this;
             InitializeComponent();
         }
+        public string MinValue
+        {
+            get { return GetValue(MinValueProperty).ToString(); }
+            set { SetValue(MinValueProperty, value); }
+        }
+
+        public static readonly DependencyProperty MinValueProperty =
+            DependencyProperty.Register("MinValue", typeof(string), 
+                typeof(ClearableTextBox), new PropertyMetadata("0"));
+
+        public string MaxValue
+        {
+            get { return GetValue(MaxValueProperty).ToString(); }
+            set { SetValue(MaxValueProperty, value); }
+        }
+
+        public static readonly DependencyProperty MaxValueProperty =
+            DependencyProperty.Register("MaxValue", typeof(string), 
+                typeof(ClearableTextBox), new PropertyMetadata("100"));
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -53,10 +72,23 @@ namespace FiberPullStrain.CustomControl.view
             else
             {
                 tbPlaceHolder.Visibility = System.Windows.Visibility.Hidden;
-                if(!float.TryParse(inputBox.Text, out float value))
+                if(!float.TryParse(inputBox.Text, out float v))
                 {
                     inputBox.Text="Invalid";
                 }
+            }
+            if (float.TryParse(inputBox.Text, out float value))
+            {
+                if (value < float.Parse(MinValue))
+                {
+                    inputBox.Text = MinValue;
+                }
+                else if (value > float.Parse(MaxValue))
+                {
+                    inputBox.Text = MaxValue;
+                }
+
+                inputBox.SelectionStart = inputBox.Text.Length;
             }
         }
 
