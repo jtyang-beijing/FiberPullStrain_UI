@@ -29,7 +29,14 @@
                 <MenuItem x:Name="mnSystemSetup" Header="System Setup" Margin="5"
                           Background="Transparent" Foreground="Black"/>
             </MenuItem>
-            <MenuItem x:Name="mnAbout" Header="About" Margin="5" Click="mnAbout_Click"/>
+            <MenuItem Header="About" Margin="5">
+                <MenuItem x:Name="mnAboutProduct" Header="Product" Margin="5"
+                          Background="Transparent" Foreground="Black"
+                          Click="mnAboutProduct_Click"/>
+                <MenuItem x:Name="mnAboutSupport" Header="Support" Margin="5"
+                          Background="Transparent" Foreground="Black"
+                          Click="mnAboutSupport_Click"/>
+            </MenuItem>
         </Menu>
 
     </Grid>

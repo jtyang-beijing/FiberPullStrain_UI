@@ -10,9 +10,9 @@
     
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="65*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="18*"/>
+            <RowDefinition Height="75*"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>

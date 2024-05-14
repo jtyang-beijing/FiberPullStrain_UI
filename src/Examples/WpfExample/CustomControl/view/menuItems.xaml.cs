@@ -16,7 +16,14 @@ namespace FiberPullStrain.CustomControl.view
             App.Current.Shutdown();
         }
 
-        private void mnAbout_Click(object sender, RoutedEventArgs e)
+        private void mnAboutProduct_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("In-Suit Fiber Pull Strain Test Stage" +
+                "\nVersion 1.0.0", "Information",
+                MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void mnAboutSupport_Click(object sender, RoutedEventArgs e)
         {
             About about = new About
             {
