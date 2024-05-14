@@ -11,11 +11,7 @@
                  Foreground="OrangeRed" FontSize="40" VerticalContentAlignment="Center"
                  HorizontalContentAlignment="Center" 
                  Text="{Binding tbBoundText, UpdateSourceTrigger=PropertyChanged}"
-                 TextChanged="inputBox_TextChanged"
-                 PreviewTextInput="inputBox_PreviewTextInput"
-                 PreviewKeyDown="inputBox_PreviewKeyDown"
-                 DataObject.Pasting="inputBox_Pasting">
-            
+                 TextChanged="inputBox_TextChanged">
         </TextBox>
         <TextBlock x:Name="tbPlaceHolder" Text="{Binding tblBoundText, UpdateSourceTrigger=PropertyChanged}" 
                    Foreground="Gray" 
