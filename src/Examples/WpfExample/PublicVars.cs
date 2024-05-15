@@ -12,10 +12,15 @@ namespace FiberPullStrain
         public Decimal DISTANCE_EXCHANGE_RATE = (Decimal)2.54;
         public Decimal FORCE_EXCHANGE_RATE = (Decimal)101.971621;
 
+        public string CURRENT_DISTANCE;
+        public string CURRENT_FORCE;
+
         public PublicVars()
         {
             MAX_VALUE_DISTANCE = "50"; 
             MAX_VALUE_FORCE = "5000";
+            CURRENT_DISTANCE = "0.00";
+            CURRENT_FORCE = "0.00";
         }
         private string max_value_distance;
 

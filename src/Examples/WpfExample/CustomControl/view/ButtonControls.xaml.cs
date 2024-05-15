@@ -3,6 +3,7 @@ using FiberPull;
 using OpenTK.Graphics.OpenGL;
 using System;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -20,6 +21,8 @@ namespace FiberPullStrain.CustomControl.view
             // initialized max value of input box. 
             inBoxDistance.MaxValue = publicVars.MAX_VALUE_DISTANCE;
             inBoxForce.MaxValue = publicVars.MAX_VALUE_FORCE;
+            lbCurrentDistance.Content = publicVars.CURRENT_DISTANCE;
+            lbCurrentForce.Content = publicVars.CURRENT_FORCE;
         }
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
@@ -34,11 +37,16 @@ namespace FiberPullStrain.CustomControl.view
             set 
             { 
                 isRunning = value;
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs("IsRunning"));
+                OnPropertyChanged();
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null) 
+        {
+            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         private void btStart_Click(object sender, RoutedEventArgs e)
         {
@@ -47,6 +55,7 @@ namespace FiberPullStrain.CustomControl.view
             IsRunning = !IsRunning;
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
+            // main functions ----------------------------
             Point point = new Point();
             point.X = mainWindow.Left;
             point.Y = mainWindow.Top;
@@ -55,6 +64,9 @@ namespace FiberPullStrain.CustomControl.view
                 mainWindow.infobar.Text = "Adding new data point...";
                 mainWindow.AddPoint1(point);
             }
+            lbCurrentDistance.Content = point.X.ToString("F2");
+            lbCurrentForce.Content = point.Y.ToString("F2");   
+            //---------------------------------------------
         }
 
         private void cbmm_Click(object sender, RoutedEventArgs e)

@@ -40,11 +40,11 @@
                     <RowDefinition Height="40"/> <!-- 0: Lable Set Items -->
                     <RowDefinition Height="50"/> <!-- 1: Input Distance -->
                     <RowDefinition Height="30"/> <!-- 2:  Button Set Origin -->
-                    <RowDefinition Height="50*"/>  <!-- 3: -->
+                    <RowDefinition Height="50*"/>  <!-- 3: Lable displaying Current Distance-->
                     <RowDefinition Height="30"/> <!-- 4: Check Box mm and Inch -->
                     <RowDefinition Height="50"/> <!-- 5: Input Force -->
                     <RowDefinition Height="30"/>  <!-- 6: Button Set Origin -->
-                    <RowDefinition Height="50*"/>  <!-- 7:  -->
+                    <RowDefinition Height="50*"/>  <!-- 7: Lable displaying Current Force -->
                     <RowDefinition Height="30"/> <!-- 8: Check Box Grams and Newton -->
                 </Grid.RowDefinitions>
                 <Label Content="Set Items" Foreground="Gray" FontSize="25" HorizontalAlignment="Center"
@@ -66,6 +66,7 @@
                           HorizontalAlignment="Center" VerticalContentAlignment="Center"
                           Click="cbinch_Click"/>
                 </Grid>
+                <!-- 3: Lable displaying Current Distance-->
                 <Border Grid.Row="3" BorderBrush="LightGray" BorderThickness="1">
                     <Viewbox>
                         <Label x:Name="lbCurrentDistance" Foreground="Orange"
@@ -91,6 +92,7 @@
                     <CheckBox x:Name="cbnewton" Grid.Column="1" Content="Newton" Foreground="Gray" FontSize="20"
                         HorizontalAlignment="Center" VerticalContentAlignment="Center" Click="cbnewton_Click" />
                 </Grid>
+                <!-- 7: Lable displaying Current Force -->
                 <Border Grid.Row="7" BorderBrush="LightGray" BorderThickness="1">
                     <Viewbox>
                         <Label x:Name="lbCurrentForce" Foreground="Orange"
