@@ -7,8 +7,8 @@
         xmlns:wpf="clr-namespace:OpenTK.Wpf;assembly=GLWpfControl"
         xmlns:CustomControl="clr-namespace:FiberPullStrain.CustomControl.view"
         mc:Ignorable="d" Background="Transparent"
-        Title="Fiber Pull Strain in-suit Test Stage" Height="800" Width="1300"
-        WindowStyle="ThreeDBorderWindow" WindowStartupLocation="CenterScreen" >
+        Title="Fiber Pull Strain in-suit Test Stage" Height="900" Width="1500"
+        WindowStyle="ThreeDBorderWindow" WindowStartupLocation="CenterScreen">
     <Grid>
         <Border BorderBrush="Gray" BorderThickness="2">
             <Grid Background="Transparent">

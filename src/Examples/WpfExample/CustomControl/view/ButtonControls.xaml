@@ -38,38 +38,69 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/> <!-- 0: Lable Set Items -->
-                    <RowDefinition Height="50*"/> <!-- 1: Input Distance -->
-                    <RowDefinition Height="30"/> <!-- 2: Button Set Origin -->
-                    <RowDefinition Height="30"/> <!-- 3: Check Box mm -->
-                    <RowDefinition Height="30"/> <!-- 4: Check Box Inch -->
-                    <RowDefinition Height="50*"/> <!-- 5: Input Force -->
-                    <RowDefinition Height="30"/> <!-- 6: Button Set Origin -->
-                    <RowDefinition Height="30"/> <!-- 7: Check Box Grams -->
-                    <RowDefinition Height="30"/> <!-- 8: Check Box Newton -->
+                    <RowDefinition Height="50"/> <!-- 1: Input Distance -->
+                    <RowDefinition Height="30"/> <!-- 2:  Button Set Origin -->
+                    <RowDefinition Height="50*"/>  <!-- 3: -->
+                    <RowDefinition Height="30"/> <!-- 4: Check Box mm and Inch -->
+                    <RowDefinition Height="50"/> <!-- 5: Input Force -->
+                    <RowDefinition Height="30"/>  <!-- 6: Button Set Origin -->
+                    <RowDefinition Height="50*"/>  <!-- 7:  -->
+                    <RowDefinition Height="30"/> <!-- 8: Check Box Grams and Newton -->
                 </Grid.RowDefinitions>
                 <Label Content="Set Items" Foreground="Gray" FontSize="25" HorizontalAlignment="Center"
                    Height="40" VerticalAlignment="Top"/>
 
                 <ClearableTextBox:ClearableTextBox x:Name="inBoxDistance" Grid.Row="1" 
                                                    tblBoundText="Input Distance"/>
-                <Button x:Name="btnDistanceSetOrigin" Grid.Row="2" Content="Set Origin" Background="Transparent" 
-                        Foreground="Gray" FontSize="20" Click="btnDistanceSetOrigin_Click"/>
-                <CheckBox x:Name="cbmm" Grid.Row="3" Content="mm" Foreground="Gray" FontSize="20"
+
+                <!-- 4: Check Box mm and Inch -->
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox x:Name="cbmm" Grid.Column="0" Content="mm" Foreground="Gray" FontSize="20"
                           HorizontalAlignment="Center" VerticalContentAlignment="Center"
                           IsChecked="True" Click="cbmm_Click"/>
-                <CheckBox x:Name="cbinch" Grid.Row="4" Content="inch" Foreground="Gray" FontSize="20"
+                    <CheckBox x:Name="cbinch" Grid.Column="1" Content="inch" Foreground="Gray" FontSize="20"
                           HorizontalAlignment="Center" VerticalContentAlignment="Center"
                           Click="cbinch_Click"/>
+                </Grid>
+                <Border Grid.Row="3" BorderBrush="LightGray" BorderThickness="1">
+                    <Viewbox>
+                        <Label x:Name="lbCurrentDistance" Foreground="Orange"
+                           Content="D"/>
+                    </Viewbox>
+                </Border>
+
+                <Button x:Name="btnDistanceSetOrigin" Grid.Row="4" Content="Set Origin" Background="Transparent" 
+                        Foreground="Gray" FontSize="20" Click="btnDistanceSetOrigin_Click"/>
+                
                 <ClearableTextBox:ClearableTextBox x:Name="inBoxForce" Grid.Row="5" 
                                                    tblBoundText="Input Force"/>
-                <Button x:Name="btnForceSetOrigin" Grid.Row="6" Content="Set Origin" Background="Transparent" 
-                        Foreground="Gray" FontSize="20" Click="btnForceSetOrigin_Click"/>
-                <CheckBox x:Name="cbgrams" Grid.Row="7" Content="grams" Foreground="Gray" FontSize="20"
+
+                <!-- 8: Check Box Grams and Newton -->
+                <Grid Grid.Row="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox x:Name="cbgrams" Grid.Column="0" Content="grams" Foreground="Gray" FontSize="20"
                           HorizontalAlignment="Center" VerticalContentAlignment="Center"
                           IsChecked="true" Click="cbgrams_Click"/>
-                <CheckBox x:Name="cbnewton" Grid.Row="8" Content="Newton" Foreground="Gray" FontSize="20"
-                          HorizontalAlignment="Center" VerticalContentAlignment="Center" Click="cbnewton_Click" />
+                    <CheckBox x:Name="cbnewton" Grid.Column="1" Content="Newton" Foreground="Gray" FontSize="20"
+                        HorizontalAlignment="Center" VerticalContentAlignment="Center" Click="cbnewton_Click" />
+                </Grid>
+                <Border Grid.Row="7" BorderBrush="LightGray" BorderThickness="1">
+                    <Viewbox>
+                        <Label x:Name="lbCurrentForce" Foreground="Orange"
+                           Content="F"/>
+                    </Viewbox>
+                </Border>
 
+
+                <Button x:Name="btnForceSetOrigin" Grid.Row="8" Content="Set Origin" Background="Transparent" 
+                        Foreground="Gray" FontSize="20" Click="btnForceSetOrigin_Click"/>
             </Grid>
         </Border>
     </Grid>

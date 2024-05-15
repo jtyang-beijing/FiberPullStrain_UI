@@ -6,7 +6,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="InteractiveDataDisplay.WPF" Version="1.0.0" />
       <PackageReference Include="JetBrains.Annotations" Version="2019.1.3" />
       <PackageReference Include="MathNet.Numerics" Version="4.15.0" />
       <PackageReference Include="ObjectTK" Version="2.0.0-pre.9" />

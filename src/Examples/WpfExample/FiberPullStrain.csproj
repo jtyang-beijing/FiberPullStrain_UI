@@ -1,31 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <OutputType>WinExe</OutputType>
-        <TargetFramework>netcoreapp3.1-windows</TargetFramework>
-        <UseWPF>true</UseWPF>
-    </PropertyGroup>
-
-    <ItemGroup>
-      <None Remove="image\wechat.png" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="InteractiveDataDisplay.WPF" Version="1.0.0" />
-      <PackageReference Include="OpenTK" Version="4.3.0" />
-      <PackageReference Include="OpenTK.GLWpfControl" Version="4.1.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\..\GLGraphs.Wpf\GLGraphs.Wpf.csproj" />
-      <ProjectReference Include="..\..\GLGraphs\GLGraphs.csproj" />
-      <ProjectReference Include="..\ScatterGraph\ScatterGraph.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Resource Include="image\wechat.png">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Resource>
-    </ItemGroup>
-
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="image\wechat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="OpenTK" Version="4.3.0" />
+    <PackageReference Include="OpenTK.GLWpfControl" Version="4.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\GLGraphs.Wpf\GLGraphs.Wpf.csproj" />
+    <ProjectReference Include="..\..\GLGraphs\GLGraphs.csproj" />
+    <ProjectReference Include="..\ScatterGraph\ScatterGraph.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\wechat.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
 </Project>

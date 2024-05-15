@@ -11,7 +11,7 @@
                  Foreground="OrangeRed" FontSize="40" VerticalContentAlignment="Center"
                  HorizontalContentAlignment="Center" 
                  Text="{Binding tbBoundText, UpdateSourceTrigger=PropertyChanged}"
-                 TextChanged="inputBox_TextChanged">
+                 TextChanged="inputBox_TextChanged" MouseEnter="inputBox_MouseEnter">
         </TextBox>
         <TextBlock x:Name="tbPlaceHolder" Text="{Binding tblBoundText, UpdateSourceTrigger=PropertyChanged}" 
                    Foreground="Gray" 

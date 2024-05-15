@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Drawing;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -109,6 +110,11 @@ namespace FiberPullStrain.CustomControl.view
         private void OnPropertyChanged([CallerMemberName]  string propertyName = null) 
         {
             PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void inputBox_MouseEnter(object sender, MouseEventArgs e)
+        {
+            inputBox.Focus();
         }
     }
 }

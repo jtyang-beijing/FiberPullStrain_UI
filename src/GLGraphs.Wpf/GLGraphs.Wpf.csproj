@@ -6,7 +6,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="InteractiveDataDisplay.WPF" Version="1.0.0" />
       <PackageReference Include="OpenTK" Version="4.3.0" />
       <PackageReference Include="OpenTK.GLWpfControl" Version="4.1.0" />
     </ItemGroup>
