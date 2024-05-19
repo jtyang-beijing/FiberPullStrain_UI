@@ -1,58 +1,35 @@
-﻿using Fiber.ScatterGraph;
-using FiberPull;
-using OpenTK.Graphics.OpenGL;
+﻿using FiberPull;
 using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Media;
 
 namespace FiberPullStrain.CustomControl.view
 {
-    public partial class ButtonControls : UserControl, INotifyPropertyChanged
+    public partial class ButtonControls : UserControl
     {
+        private MainViewModel viewModel;
         PublicVars publicVars = new PublicVars();
         public ButtonControls()
         {
-            DataContext = this;
+            viewModel = new MainViewModel();
+            DataContext = viewModel;
             InitializeComponent();
             // initialized max value of input box. 
             inBoxDistance.MaxValue = publicVars.MAX_VALUE_DISTANCE;
             inBoxForce.MaxValue = publicVars.MAX_VALUE_FORCE;
-            lbCurrentDistance.Content = publicVars.CURRENT_DISTANCE;
-            lbCurrentForce.Content = publicVars.CURRENT_FORCE;
+            //lbCurrentDistance.Content = publicVars.CURRENT_DISTANCE;
+            //lbCurrentForce.Content = publicVars.CURRENT_FORCE;
         }
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
         }
 
-        private bool isRunning;
-
-        public bool IsRunning
-        {
-            get { return isRunning; }
-            set 
-            { 
-                isRunning = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null) 
-        {
-            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         private void btStart_Click(object sender, RoutedEventArgs e)
         {
-            if(IsRunning) {  }
+            if(viewModel.IsRunning) {  }
             else { }
-            IsRunning = !IsRunning;
+            viewModel.IsRunning = !viewModel.IsRunning;
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
             // main functions ----------------------------
@@ -64,8 +41,10 @@ namespace FiberPullStrain.CustomControl.view
                 mainWindow.infobar.Text = "Adding new data point...";
                 mainWindow.AddPoint1(point);
             }
-            lbCurrentDistance.Content = point.X.ToString("F2");
-            lbCurrentForce.Content = point.Y.ToString("F2");   
+            //lbCurrentDistance.Content = point.X.ToString("F2");
+            //lbCurrentForce.Content = point.Y.ToString("F2");   
+            viewModel.lb_Current_Distance = point.X.ToString("F2");
+            viewModel.lb_Current_Force = point.Y.ToString("F2");
             //---------------------------------------------
         }
 
