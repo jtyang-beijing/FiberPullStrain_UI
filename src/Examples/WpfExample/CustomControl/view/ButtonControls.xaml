@@ -16,7 +16,7 @@
         <Button x:Name="btStart" Background="Transparent" Margin="3" BorderBrush="Orange" BorderThickness="1"
                 FontSize="60" Click="btStart_Click">
             <Button.Style>
-                <Style TargetType="Button">
+                <Style TargetType="Button" >
                     <Setter Property="Foreground" Value="Gray"/>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding IsRunning}" Value="True">

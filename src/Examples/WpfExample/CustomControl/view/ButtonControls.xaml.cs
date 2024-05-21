@@ -7,13 +7,16 @@ namespace FiberPullStrain.CustomControl.view
 {
     public partial class ButtonControls : UserControl
     {
+        private SerialCommunication serialCommunication;
         private MainViewModel viewModel;
         PublicVars publicVars = new PublicVars();
         public ButtonControls()
         {
-            viewModel = new MainViewModel();
-            DataContext = viewModel;
+            serialCommunication = new SerialCommunication();
+            viewModel = new MainViewModel(serialCommunication);
+            this.DataContext = viewModel;
             InitializeComponent();
+
             // initialized max value of input box. 
             inBoxDistance.MaxValue = publicVars.MAX_VALUE_DISTANCE;
             inBoxForce.MaxValue = publicVars.MAX_VALUE_FORCE;
@@ -22,6 +25,10 @@ namespace FiberPullStrain.CustomControl.view
         }
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
+            if(serialCommunication.myPort.IsOpen) 
+            {
+                serialCommunication.myPort.Close();
+            }
             App.Current.Shutdown();
         }
 
@@ -39,7 +46,7 @@ namespace FiberPullStrain.CustomControl.view
             if (mainWindow != null)
             {
                 mainWindow.infobar.Text = "Adding new data point...";
-                mainWindow.AddPoint1(point);
+                //mainWindow.AddPoint1(point);
             }
             //lbCurrentDistance.Content = point.X.ToString("F2");
             //lbCurrentForce.Content = point.Y.ToString("F2");   
@@ -131,12 +138,12 @@ namespace FiberPullStrain.CustomControl.view
 
         private void btnDistanceSetOrigin_Click(object sender, RoutedEventArgs e)
         {
-            inBoxDistance.tbBoundText = "0.00";
+            viewModel.lb_Current_Distance = "0.00";
         }
 
         private void btnForceSetOrigin_Click(object sender, RoutedEventArgs e)
         {
-            inBoxForce.tbBoundText = "0.00";
+            viewModel.lb_Current_Force = "0.00";
         }
     }
 }
