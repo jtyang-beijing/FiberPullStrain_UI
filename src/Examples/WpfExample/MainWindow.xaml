@@ -51,13 +51,13 @@
                                 </Grid.RowDefinitions>
 
                                 <!-- Live Chart -->
-                                <!--<local:GLCartesianGraphControlString
+                                <local:GLCartesianGraphControlString
                                     x:Name="CartGraph"
                                     Margin="0,5,5,5"
                                     Grid.Column="1" 
                                     BorderBrush="LightGray" 
                                     BorderThickness="1"
-                                    />-->
+                                    />
                                 <!-- X Axis -->
                                 <TextBlock Grid.Row="1" Text="Pull Distance" Foreground="White"
                        FontSize="20" FlowDirection="LeftToRight"

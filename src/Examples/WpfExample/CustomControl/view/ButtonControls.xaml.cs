@@ -46,7 +46,7 @@ namespace FiberPullStrain.CustomControl.view
             if (mainWindow != null)
             {
                 mainWindow.infobar.Text = "Adding new data point...";
-                //mainWindow.AddPoint1(point);
+                mainWindow.AddPoint1(point);
             }
             //lbCurrentDistance.Content = point.X.ToString("F2");
             //lbCurrentForce.Content = point.Y.ToString("F2");   

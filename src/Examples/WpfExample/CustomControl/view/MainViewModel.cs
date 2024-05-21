@@ -5,7 +5,7 @@ using System.Windows.Threading;
 
 namespace FiberPullStrain.CustomControl.view
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : ViewModelBase
     {
         private protected readonly SerialCommunication _serialcommunication;
         private Dispatcher _dispatcher;
@@ -87,15 +87,5 @@ namespace FiberPullStrain.CustomControl.view
                 OnPropertyChanged();
             }
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /* method to execute when setter of a control setting new value
- * 
- */
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
     }
 }
