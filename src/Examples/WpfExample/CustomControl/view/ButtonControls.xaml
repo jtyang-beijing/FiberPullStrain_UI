@@ -4,9 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FiberPullStrain.CustomControl.view"
-             xmlns:ClearableTextBox="clr-namespace:FiberPullStrain.CustomControl.view" d:DataContext="{d:DesignInstance Type=local:MainViewModel}"
+             xmlns:ClearableTextBox="clr-namespace:FiberPullStrain.CustomControl.view" 
+             d:DataContext="{d:DesignInstance Type=local:MainViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="200">
+             d:DesignHeight="500" d:DesignWidth="200" Loaded="UserControl_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>

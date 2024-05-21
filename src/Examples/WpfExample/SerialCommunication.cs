@@ -17,7 +17,8 @@ namespace FiberPullStrain
         {
             myPort = new SerialPort();
             myPort.DataReceived += MyPort_DataReceived;
-            InitializeSerialPort();
+            //InitializeSerialPort();
+            //SearchAllCOMports();
         }
         private void InitializeSerialPort()
         {

@@ -145,5 +145,10 @@ namespace FiberPullStrain.CustomControl.view
         {
             viewModel.lb_Current_Force = "0.00";
         }
+
+        private async void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            await serialCommunication.SearchAllCOMports();
+        }
     }
 }
