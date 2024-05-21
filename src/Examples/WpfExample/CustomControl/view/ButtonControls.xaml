@@ -10,7 +10,7 @@
              d:DesignHeight="500" d:DesignWidth="200" Loaded="UserControl_Loaded">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="100" />
             <RowDefinition/>
             <RowDefinition Height="55"/>
         </Grid.RowDefinitions>

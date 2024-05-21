@@ -15,7 +15,7 @@ namespace FiberPullStrain.CustomControl.view
             serialCommunication = new SerialCommunication();
             viewModel = new MainViewModel(serialCommunication);
             this.DataContext = viewModel;
-            InitializeComponent();
+            InitializeComponent() ;
 
             // initialized max value of input box. 
             inBoxDistance.MaxValue = publicVars.MAX_VALUE_DISTANCE;
@@ -45,7 +45,7 @@ namespace FiberPullStrain.CustomControl.view
             point.Y = mainWindow.Top;
             if (mainWindow != null)
             {
-                mainWindow.infobar.Text = "Adding new data point...";
+                //mainWindow.infobar.Text = "Adding new data point...";
                 mainWindow.AddPoint1(point);
             }
             //lbCurrentDistance.Content = point.X.ToString("F2");
@@ -148,6 +148,7 @@ namespace FiberPullStrain.CustomControl.view
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            
             await serialCommunication.SearchAllCOMports();
         }
     }

@@ -20,19 +20,19 @@ namespace FiberPullStrain
             //InitializeSerialPort();
             //SearchAllCOMports();
         }
-        private void InitializeSerialPort()
-        {
-            myPort = new SerialPort("COM3", 115200); // Adjust the port name and baud rate as necessary
-            myPort.DataReceived += MyPort_DataReceived;
-            try
-            {
-                myPort.Open();
-            }
-            catch (Exception ex)
-            {
-                DataReceived?.Invoke(this, $"Error opening serial port: {ex.Message}");
-            }
-        }
+        //private void InitializeSerialPort()
+        //{
+        //    myPort = new SerialPort("COM3", 115200); // Adjust the port name and baud rate as necessary
+        //    myPort.DataReceived += MyPort_DataReceived;
+        //    try
+        //    {
+        //        myPort.Open();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        DataReceived?.Invoke(this, $"Error opening serial port: {ex.Message}");
+        //    }
+        //}
 
         public async Task SearchAllCOMports()
         {
@@ -119,30 +119,32 @@ namespace FiberPullStrain
         }
         public void MyPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
+            
             string data = myPort.ReadLine().TrimEnd();
-            DataReceived?.Invoke(this, data);
-            //if(data.Length > 0)
-            //{
-            //    if (!handshakesucceed)
-            //    {
-            //        if (data.Contains("FiberPull")) // invoke UI information update function
-            //        {
-            //            DataReceived?.Invoke(this, $"{myPort.PortName} : Hand Shaking succeed.");
-            //            handshakesucceed = true;
-            //        }
-            //        else
-            //        {
-            //            handshakesucceed = false;
-            //            myPort.Close();
-            //            DataReceived?.Invoke(this, $"{myPort.PortName} : Hand Shaking failed.");
-            //        }
-            //    }
+            DataReceived?.Invoke(this, $"Data incoming...{data}");
+            //DataReceived?.Invoke(this, data);
+            if (data.Length > 0)
+            {
+                if (!handshakesucceed)
+                {
+                    if (data.Contains("FiberPull")) // invoke UI information update function
+                    {
+                        DataReceived?.Invoke(this, $"{myPort.PortName} -- Hand Shaking succeed.");
+                        handshakesucceed = true;
+                    }
+                    else
+                    {
+                        handshakesucceed = false;
+                        myPort.Close();
+                        DataReceived?.Invoke(this, $"{myPort.PortName} -- Hand Shaking failed.");
+                    }
+                }
 
-            //    else
-            //    {
-            //        DataReceived?.Invoke(this, data);//????????????????????????????????
-            //    }
-            //}
+                else
+                {
+                    DataReceived?.Invoke(this, data);//????????????????????????????????
+                }
+            }
         }
         public void SimulateDataReceived(string data)
         {

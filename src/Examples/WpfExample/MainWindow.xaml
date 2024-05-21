@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FiberPull"
         xmlns:wpf="clr-namespace:OpenTK.Wpf;assembly=GLWpfControl"
-        xmlns:CustomControl="clr-namespace:FiberPullStrain.CustomControl.view"
+        xmlns:CustomControl="clr-namespace:FiberPullStrain.CustomControl.view" d:DataContext="{d:DesignInstance Type=CustomControl:MainViewModel}"
         mc:Ignorable="d" Background="Transparent"
         Title="Fiber Pull Strain in-suit Test Stage" Height="900" Width="1500"
         WindowStyle="ThreeDBorderWindow" WindowStartupLocation="CenterScreen">
@@ -72,20 +72,8 @@
                 </Grid>
                 <!-- Third Row, information -->
                 <StackPanel Grid.Row="2" Background="Gray">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock x:Name="infobar" Foreground="White" Margin="5,0,0,0" Text="{Binding Bar_Info}"
-                                   VerticalAlignment="Bottom" TextAlignment="Left">
-                            
-                        </TextBlock>
-                        <ProgressBar x:Name="processbar" Width="300" HorizontalAlignment="Right"
-                                     Margin="0,0,5,0" Background="Gray" BorderThickness="0">
-                            
-                        </ProgressBar>
-                    </Grid>
+                    <Label x:Name="inforBar" Content="{Binding Bar_Infor, UpdateSourceTrigger=PropertyChanged}"
+                           Foreground="Beige"/>
                 </StackPanel>
 
             </Grid>

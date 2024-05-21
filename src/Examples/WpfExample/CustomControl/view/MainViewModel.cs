@@ -34,7 +34,7 @@ namespace FiberPullStrain.CustomControl.view
                 }
                 else
                 {
-                    Bar_Infor = e;
+                    Bar_Infor = str[0];
                 }
             });
 

@@ -1,14 +1,22 @@
 ﻿using Fiber.ScatterGraph;
+using FiberPullStrain;
+using FiberPullStrain.CustomControl.view;
 using System;
 using System.Windows;
 
 namespace FiberPull
 {
     public partial class MainWindow : Window {
+
+        private SerialCommunication serialCommunication;
+        private MainViewModel viewModel;
         public MainWindow() {
             InitializeComponent();
             CartGraph.Graph = ScatterGraphGenerator.GenerateScatterGraph();
             CartGraph.Render += AddPoint;
+            serialCommunication = new SerialCommunication();
+            viewModel = new MainViewModel(serialCommunication);
+            this.DataContext = viewModel;
 
         }
 
