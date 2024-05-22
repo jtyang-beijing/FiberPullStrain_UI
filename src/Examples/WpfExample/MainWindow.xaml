@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FiberPull"
         xmlns:wpf="clr-namespace:OpenTK.Wpf;assembly=GLWpfControl"
         xmlns:CustomControl="clr-namespace:FiberPullStrain.CustomControl.view" d:DataContext="{d:DesignInstance Type=CustomControl:MainViewModel}"
-        mc:Ignorable="d" Background="Transparent"
+        mc:Ignorable="d" Background="Transparent" Loaded="Window_Loaded" Closing="Window_Closing"
         Title="Fiber Pull Strain in-suit Test Stage" Height="900" Width="1500"
         WindowStyle="ThreeDBorderWindow" WindowStartupLocation="CenterScreen">
     <Grid>

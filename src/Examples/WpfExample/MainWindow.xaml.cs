@@ -8,8 +8,8 @@ namespace FiberPull
 {
     public partial class MainWindow : Window {
 
-        private SerialCommunication serialCommunication;
-        private MainViewModel viewModel;
+        public SerialCommunication serialCommunication;
+        public MainViewModel viewModel;
         public MainWindow() {
             InitializeComponent();
             CartGraph.Graph = ScatterGraphGenerator.GenerateScatterGraph();
@@ -44,6 +44,15 @@ namespace FiberPull
             CartGraph.Graph.State.Update((float)deltaTime.TotalSeconds);
         }
 
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            await serialCommunication.SearchAllCOMports();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (serialCommunication.myPort.IsOpen) serialCommunication.myPort.Close();
+        }
         //
         // private void RenderLeftControl(TimeSpan deltaTime) {
         //     GL.ClearColor(Color4.Black);

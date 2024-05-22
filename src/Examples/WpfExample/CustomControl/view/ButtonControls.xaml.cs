@@ -7,16 +7,11 @@ namespace FiberPullStrain.CustomControl.view
 {
     public partial class ButtonControls : UserControl
     {
-        private SerialCommunication serialCommunication;
-        private MainViewModel viewModel;
+        private MainWindow mainwindow;
         PublicVars publicVars = new PublicVars();
         public ButtonControls()
         {
-            serialCommunication = new SerialCommunication();
-            viewModel = new MainViewModel(serialCommunication);
-            this.DataContext = viewModel;
             InitializeComponent() ;
-
             // initialized max value of input box. 
             inBoxDistance.MaxValue = publicVars.MAX_VALUE_DISTANCE;
             inBoxForce.MaxValue = publicVars.MAX_VALUE_FORCE;
@@ -25,18 +20,14 @@ namespace FiberPullStrain.CustomControl.view
         }
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            if(serialCommunication.myPort.IsOpen) 
-            {
-                serialCommunication.myPort.Close();
-            }
             App.Current.Shutdown();
         }
 
         private void btStart_Click(object sender, RoutedEventArgs e)
         {
-            if(viewModel.IsRunning) {  }
+            if(mainwindow.viewModel.IsRunning) {  }
             else { }
-            viewModel.IsRunning = !viewModel.IsRunning;
+            mainwindow.viewModel.IsRunning = !mainwindow.viewModel.IsRunning;
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
             // main functions ----------------------------
@@ -50,8 +41,8 @@ namespace FiberPullStrain.CustomControl.view
             }
             //lbCurrentDistance.Content = point.X.ToString("F2");
             //lbCurrentForce.Content = point.Y.ToString("F2");   
-            viewModel.lb_Current_Distance = point.X.ToString("F2");
-            viewModel.lb_Current_Force = point.Y.ToString("F2");
+            mainwindow.viewModel.lb_Current_Distance = point.X.ToString("F2");
+            mainwindow.viewModel.lb_Current_Force = point.Y.ToString("F2");
             //---------------------------------------------
         }
 
@@ -138,18 +129,18 @@ namespace FiberPullStrain.CustomControl.view
 
         private void btnDistanceSetOrigin_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.lb_Current_Distance = "0.00";
+            mainwindow.viewModel.lb_Current_Distance = "0.00";
         }
 
         private void btnForceSetOrigin_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.lb_Current_Force = "0.00";
+            mainwindow.viewModel.lb_Current_Force = "0.00";
         }
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             
-            await serialCommunication.SearchAllCOMports();
+            //await mainwindow.serialCommunication.SearchAllCOMports();
         }
     }
 }

@@ -122,7 +122,6 @@ namespace FiberPullStrain
             
             string data = myPort.ReadLine().TrimEnd();
             DataReceived?.Invoke(this, $"Data incoming...{data}");
-            //DataReceived?.Invoke(this, data);
             if (data.Length > 0)
             {
                 if (!handshakesucceed)
