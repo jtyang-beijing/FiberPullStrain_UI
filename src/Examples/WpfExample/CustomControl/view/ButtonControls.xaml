@@ -4,10 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FiberPullStrain.CustomControl.view"
-             xmlns:ClearableTextBox="clr-namespace:FiberPullStrain.CustomControl.view" 
              d:DataContext="{d:DesignInstance Type=local:MainViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="200" Loaded="UserControl_Loaded">
+             d:DesignHeight="500" d:DesignWidth="200">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
@@ -51,8 +50,7 @@
                 <Label Content="Set Items" Foreground="Gray" FontSize="25" HorizontalAlignment="Center"
                    Height="40" VerticalAlignment="Top"/>
 
-                <ClearableTextBox:ClearableTextBox x:Name="inBoxDistance" Grid.Row="1" 
-                                                   tblBoundText="Input Distance"/>
+                <local:ClearableTextBox x:Name="inBoxDistance" Grid.Row="1" />
 
                 <!-- 4: Check Box mm and Inch -->
                 <Grid Grid.Row="2">
@@ -78,8 +76,7 @@
                 <Button x:Name="btnDistanceSetOrigin" Grid.Row="4" Content="Set Origin" Background="Transparent" 
                         Foreground="Gray" FontSize="20" Click="btnDistanceSetOrigin_Click"/>
                 
-                <ClearableTextBox:ClearableTextBox x:Name="inBoxForce" Grid.Row="5" 
-                                                   tblBoundText="Input Force"/>
+                <local:ClearableTextBox x:Name="inBoxForce" Grid.Row="5" />
 
                 <!-- 8: Check Box Grams and Newton -->
                 <Grid Grid.Row="6">

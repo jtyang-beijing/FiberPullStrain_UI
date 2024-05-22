@@ -12,6 +12,7 @@ namespace FiberPull
         public MainViewModel viewModel;
         public MainWindow() {
             InitializeComponent();
+            myButtonControls._mainwindow = this;
             CartGraph.Graph = ScatterGraphGenerator.GenerateScatterGraph();
             CartGraph.Render += AddPoint;
             serialCommunication = new SerialCommunication();

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using FiberPull;
+using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
@@ -7,12 +8,12 @@ using System.Windows.Controls;
 using System.Windows.Input;
 namespace FiberPullStrain.CustomControl.view
 {
-    public partial class ClearableTextBox : UserControl, INotifyPropertyChanged
+    public partial class ClearableTextBox : UserControl
     {
         public ClearableTextBox()
         {
-            DataContext = this;
             InitializeComponent();
+            DataContext = MainWindow.DataContextProperty;
         }
         
         /*
@@ -37,32 +38,6 @@ namespace FiberPullStrain.CustomControl.view
         public static readonly DependencyProperty MaxValueProperty =
             DependencyProperty.Register("MaxValue", typeof(string), 
                 typeof(ClearableTextBox), new PropertyMetadata("100"));// default value set to string "100"
-
-        //-------------------------------------------------------
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        // bount text for text block - place holder text
-        private string tblbountText;
-        public string tblBoundText
-        {
-            get { return tblbountText; }
-            set 
-            { 
-                tblbountText = value; 
-                OnPropertyChanged();
-            }
-        }
-        // bount text for text input box
-        private string tbbountText;
-        public string tbBoundText
-        {
-            get { return tbbountText; }
-            set
-            {
-                tbbountText = value;
-                OnPropertyChanged();
-            }
-        }
 
         private void btnClear_Click(object sender, System.Windows.RoutedEventArgs e)
         {
@@ -104,13 +79,6 @@ namespace FiberPullStrain.CustomControl.view
             }
         }
 
-        /* method to execute when setter of a control setting new value
-         * 
-         */
-        private void OnPropertyChanged([CallerMemberName]  string propertyName = null) 
-        {
-            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
 
         private void inputBox_MouseEnter(object sender, MouseEventArgs e)
         {

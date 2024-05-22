@@ -16,7 +16,7 @@ namespace FiberPullStrain.CustomControl.view
             _serialcommunication.DataReceived += _serialcommunication_DataReceived;
             //_serialcommunication.SimulateDataReceived("f:0f0f");
             //_serialcommunication.SimulateDataReceived("d:0d0d");
-            //_serialcommunication.SimulateDataReceived("test infor....");
+            _serialcommunication.SimulateDataReceived("Searching Instrument, Please Wait...");
         }
 
         private void _serialcommunication_DataReceived(object sender, string e)
@@ -84,6 +84,30 @@ namespace FiberPullStrain.CustomControl.view
             set
             {
                 bar_infor = value;
+                OnPropertyChanged();
+            }
+        }
+
+        //-------------------------------------------------------
+        // bount text for text block - place holder text
+        private string tblbountText;
+        public string tblBoundText
+        {
+            get { return tblbountText; }
+            set
+            {
+                tblbountText = value;
+                OnPropertyChanged();
+            }
+        }
+        // bount text for text input box
+        private string tbbountText;
+        public string tbBoundText
+        {
+            get { return tbbountText; }
+            set
+            {
+                tbbountText = value;
                 OnPropertyChanged();
             }
         }
