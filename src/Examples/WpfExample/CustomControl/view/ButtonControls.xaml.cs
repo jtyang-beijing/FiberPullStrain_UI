@@ -49,19 +49,19 @@ namespace FiberPullStrain.CustomControl.view
         private void cbmm_Click(object sender, RoutedEventArgs e)
         {
             cbinch.IsChecked = !cbinch.IsChecked;
-            bool ok = Decimal.TryParse(_mainwindow.viewModel.tbBoundText, out Decimal ss);
+            bool ok = Decimal.TryParse(inBoxDistance.inputBox.Text, out Decimal ss);
             if (ok) 
             {
                 if (cbmm.IsChecked == true)
                 {
                     inBoxDistance.MaxValue = publicVars.MAX_VALUE_DISTANCE;
-                    _mainwindow.viewModel.tbBoundText = (ss * publicVars.DISTANCE_EXCHANGE_RATE).ToString("F2");
+                    inBoxDistance.inputBox.Text = (ss * publicVars.DISTANCE_EXCHANGE_RATE).ToString("F2");
                 }
                 else
                 {
                     inBoxDistance.MaxValue = (Decimal.Parse(publicVars.MAX_VALUE_DISTANCE) /
                         publicVars.DISTANCE_EXCHANGE_RATE ).ToString("F2");
-                    _mainwindow.viewModel.tbBoundText = (ss / publicVars.DISTANCE_EXCHANGE_RATE).ToString("F2");
+                    inBoxDistance.inputBox.Text = (ss / publicVars.DISTANCE_EXCHANGE_RATE).ToString("F2");
                 }
             }
         }
@@ -69,19 +69,20 @@ namespace FiberPullStrain.CustomControl.view
         private void cbinch_Click(object sender, RoutedEventArgs e)
         {
             cbmm.IsChecked = !cbmm.IsChecked;
-            bool ok = Decimal.TryParse(_mainwindow.viewModel.tbBoundText, out Decimal ss);
+            bool ok = Decimal.TryParse(inBoxDistance.inputBox.Text, out Decimal ss);
             if(ok)
             {
                 if (cbinch.IsChecked == true)
                 {
                     inBoxDistance.MaxValue = (Decimal.Parse(publicVars.MAX_VALUE_DISTANCE) /
                         publicVars.DISTANCE_EXCHANGE_RATE).ToString("F2");
-                    _mainwindow.viewModel.tbBoundText = (ss / publicVars.DISTANCE_EXCHANGE_RATE).ToString("F2");
+                    inBoxDistance.inputBox.Text = (ss / publicVars.DISTANCE_EXCHANGE_RATE).ToString("F2");
+
                 }
                 else
                 {
                     inBoxDistance.MaxValue = publicVars.MAX_VALUE_DISTANCE;
-                    _mainwindow.viewModel.tbBoundText = (ss * publicVars.DISTANCE_EXCHANGE_RATE).ToString("F2");
+                    inBoxDistance.inputBox.Text = (ss * publicVars.DISTANCE_EXCHANGE_RATE).ToString("F2");
                 }
             }
 
@@ -90,19 +91,19 @@ namespace FiberPullStrain.CustomControl.view
         private void cbgrams_Click(object sender, RoutedEventArgs e)
         {
             cbnewton.IsChecked = ! cbnewton.IsChecked;
-            bool ok = Decimal.TryParse(_mainwindow.viewModel.tbBoundText, out Decimal ss);
+            bool ok = Decimal.TryParse(inBoxForce.inputBox.Text, out Decimal ss);
             if(ok)
             {
                 if (cbgrams.IsChecked == true)
                 {
                     inBoxForce.MaxValue = publicVars.MAX_VALUE_FORCE;
-                    _mainwindow.viewModel.tbBoundText = (ss * publicVars.FORCE_EXCHANGE_RATE).ToString("F2");
+                    inBoxForce.inputBox.Text = (ss * publicVars.FORCE_EXCHANGE_RATE).ToString("F2");
                 }
                 else
                 {
                     inBoxForce.MaxValue = (Decimal.Parse(publicVars.MAX_VALUE_FORCE) /
                         publicVars.FORCE_EXCHANGE_RATE).ToString("F2");
-                    _mainwindow.viewModel.tbBoundText = (ss / publicVars.FORCE_EXCHANGE_RATE).ToString("F2");
+                    inBoxForce.inputBox.Text = (ss / publicVars.FORCE_EXCHANGE_RATE).ToString("F2");
                 }
             }
         }
@@ -110,19 +111,19 @@ namespace FiberPullStrain.CustomControl.view
         private void cbnewton_Click(object sender, RoutedEventArgs e)
         {
             cbgrams.IsChecked = !cbgrams.IsChecked;
-            bool ok = Decimal.TryParse(_mainwindow.viewModel.tbBoundText, out Decimal ss);
+            bool ok = Decimal.TryParse(inBoxForce.inputBox.Text, out Decimal ss);
             if(ok)
             {
                 if (cbnewton.IsChecked == true)
                 {
                     inBoxForce.MaxValue = (Decimal.Parse(publicVars.MAX_VALUE_FORCE) /
                         publicVars.FORCE_EXCHANGE_RATE).ToString("F2");
-                    _mainwindow.viewModel.tbBoundText = (ss / publicVars.FORCE_EXCHANGE_RATE).ToString("F2");
+                    inBoxForce.inputBox.Text = (ss / publicVars.FORCE_EXCHANGE_RATE).ToString("F2");
                 }
                 else
                 {
                     inBoxForce.MaxValue = publicVars.MAX_VALUE_FORCE;
-                    _mainwindow.viewModel.tbBoundText = (ss * publicVars.FORCE_EXCHANGE_RATE).ToString("F2");
+                    inBoxForce.inputBox.Text = (ss * publicVars.FORCE_EXCHANGE_RATE).ToString("F2");
                 }
             }
         }
