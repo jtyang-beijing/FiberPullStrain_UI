@@ -52,7 +52,9 @@ namespace FiberPull
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (serialCommunication.myPort.IsOpen) serialCommunication.myPort.Close();
+            //if (serialCommunication.myPort.IsOpen) serialCommunication.myPort.Close();
+            //myButtonControls._mainwindow.Close();
+            //App.Current.Shutdown();
         }
         //
         // private void RenderLeftControl(TimeSpan deltaTime) {
