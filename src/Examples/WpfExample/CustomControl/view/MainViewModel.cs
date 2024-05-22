@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Threading;
@@ -9,8 +10,10 @@ namespace FiberPullStrain.CustomControl.view
     {
         private protected readonly SerialCommunication _serialcommunication;
         private Dispatcher _dispatcher;
+        private PublicVars _publicVars;
         public MainViewModel(SerialCommunication serialCommunication)
         {
+            _publicVars = new PublicVars();
             _dispatcher = Dispatcher.CurrentDispatcher;
             _serialcommunication = serialCommunication;
             _serialcommunication.DataReceived += _serialcommunication_DataReceived;
@@ -30,7 +33,8 @@ namespace FiberPullStrain.CustomControl.view
                 }
                 else if (str[0] == "d")
                 {
-                    lb_Current_Distance = str[1];
+                    string dd = (Decimal.Parse(str[1]) / _publicVars.MOTOR_SCALE).ToString("F2");
+                    lb_Current_Distance = dd;
                 }
                 else
                 {

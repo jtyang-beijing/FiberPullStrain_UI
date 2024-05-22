@@ -80,7 +80,7 @@ namespace FiberPullStrain
                         {
                             if (myPort.BytesToRead > 0)
                             {
-                                string ss = myPort.ReadLine().TrimEnd();
+                                string ss = myPort.ReadExisting();
                                 if (ss.Contains("FiberPull"))
                                 {
                                     handshakesucceed = true;
@@ -100,7 +100,7 @@ namespace FiberPullStrain
                             
                             myPort.DiscardOutBuffer();
                             myPort.WriteLine("h");
-                            await Task.Delay(200);
+                            await Task.Delay(50);
                             i++;
                         }
                         if (!handshakesucceed)

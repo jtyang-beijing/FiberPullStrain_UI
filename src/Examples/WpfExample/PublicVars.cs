@@ -11,6 +11,7 @@ namespace FiberPullStrain
     {
         public Decimal DISTANCE_EXCHANGE_RATE = (Decimal)2.54;
         public Decimal FORCE_EXCHANGE_RATE = (Decimal)101.971621;
+        public Decimal MOTOR_SCALE = (Decimal)7061.176470588235;
 
         public string CURRENT_DISTANCE;
         public string CURRENT_FORCE;

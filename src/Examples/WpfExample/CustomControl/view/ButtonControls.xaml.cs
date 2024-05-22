@@ -37,13 +37,15 @@ namespace FiberPullStrain.CustomControl.view
             if (mainWindow != null)
             {
                 //mainWindow.infobar.Text = "Adding new data point...";
-                mainWindow.AddPoint1(point);
+                //mainWindow.AddPoint1(point);
             }
             //lbCurrentDistance.Content = point.X.ToString("F2");
             //lbCurrentForce.Content = point.Y.ToString("F2");   
-            _mainwindow.viewModel.lb_Current_Distance = point.X.ToString("F2");
-            _mainwindow.viewModel.lb_Current_Force = point.Y.ToString("F2");
+            //_mainwindow.viewModel.lb_Current_Distance = point.X.ToString("F2");
+            //_mainwindow.viewModel.lb_Current_Force = point.Y.ToString("F2");
             //---------------------------------------------
+            string _cmd = "m" + (Decimal.Parse(inBoxDistance.inputBox.Text)* publicVars.MOTOR_SCALE).ToString();
+            _mainwindow.serialCommunication.myPort.WriteLine(_cmd);
         }
 
         private void cbmm_Click(object sender, RoutedEventArgs e)
