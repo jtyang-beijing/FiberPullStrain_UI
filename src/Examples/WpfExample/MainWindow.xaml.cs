@@ -14,11 +14,20 @@ namespace FiberPull
             InitializeComponent();
             myButtonControls._mainwindow = this;
             CartGraph.Graph = ScatterGraphGenerator.GenerateScatterGraph();
-            CartGraph.Render += AddPoint;
+            //CartGraph.Render += AddPoint;
             serialCommunication = new SerialCommunication();
             viewModel = new MainViewModel(serialCommunication);
             this.DataContext = viewModel;
+            viewModel.lb_Current_Distance_Content_Changed += ViewModel_lb_Current_Distance_Content_Changed;
+        }
 
+        Point newPoint = new Point();
+        private void ViewModel_lb_Current_Distance_Content_Changed(object sender, EventArgs e)
+        {
+            float.TryParse(viewModel.lb_Current_Distance, out float x);
+            float.TryParse(viewModel.lb_Current_Force, out float y);
+            newPoint.X = x; newPoint.Y = y;
+            AddPoint1(newPoint);
         }
 
         //private int i = 0;

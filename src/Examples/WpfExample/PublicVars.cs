@@ -1,4 +1,5 @@
-﻿using OpenTK.Graphics.OpenGL;
+﻿using FiberPullStrain.CustomControl.view;
+using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace FiberPullStrain
 {
-    public partial class PublicVars: INotifyPropertyChanged
+    public partial class PublicVars: ViewModelBase
     {
         public Decimal DISTANCE_EXCHANGE_RATE = (Decimal)2.54;
         public Decimal FORCE_EXCHANGE_RATE = (Decimal)101.971621;
@@ -45,13 +46,6 @@ namespace FiberPullStrain
                 max_value_force = value;
                 OnPropertyChanged();
             }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged([CallerMemberName] string propertyName =null) 
-        { 
-        
         }
     }
 }

@@ -65,7 +65,13 @@ namespace FiberPullStrain.CustomControl.view
             {
                 lb_current_distance = value;
                 OnPropertyChanged();
+                Onlb_Current_Distance_Changed();
             }
+        }
+        public event EventHandler lb_Current_Distance_Content_Changed;
+        protected virtual void Onlb_Current_Distance_Changed()
+        {
+            lb_Current_Distance_Content_Changed?.Invoke(this, EventArgs.Empty);
         }
 
         private string lb_current_force;

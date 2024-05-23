@@ -69,7 +69,8 @@
                 <Border Grid.Row="3" BorderBrush="LightGray" BorderThickness="1">
                     <Viewbox>
                         <Label x:Name="lbCurrentDistance" Foreground="Orange"
-                           Content="{Binding lb_Current_Distance, UpdateSourceTrigger=PropertyChanged}"/>
+                           Content="{Binding lb_Current_Distance, UpdateSourceTrigger=PropertyChanged}"
+                               />
                     </Viewbox>
                 </Border>
 
