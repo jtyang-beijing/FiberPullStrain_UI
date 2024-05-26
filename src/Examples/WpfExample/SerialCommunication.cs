@@ -17,22 +17,7 @@ namespace FiberPullStrain
         {
             myPort = new SerialPort();
             myPort.DataReceived += MyPort_DataReceived;
-            //InitializeSerialPort();
-            //SearchAllCOMports();
         }
-        //private void InitializeSerialPort()
-        //{
-        //    myPort = new SerialPort("COM3", 115200); // Adjust the port name and baud rate as necessary
-        //    myPort.DataReceived += MyPort_DataReceived;
-        //    try
-        //    {
-        //        myPort.Open();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        DataReceived?.Invoke(this, $"Error opening serial port: {ex.Message}");
-        //    }
-        //}
 
         public async Task SearchAllCOMports()
         {
@@ -100,8 +85,9 @@ namespace FiberPullStrain
                             
                             myPort.DiscardOutBuffer();
                             myPort.WriteLine("h");
-                            await Task.Delay(50);
                             i++;
+                            DataReceived?.Invoke(this, $"Trying Hand shaking with {myPort.PortName} ... {i.ToString()}");
+                            await Task.Delay(200);
                         }
                         if (!handshakesucceed)
                         {
