@@ -8,6 +8,8 @@ namespace FiberPullStrain.CustomControl.view
     public partial class ButtonControls : UserControl
     {
         public MainWindow _mainwindow { get; set; }
+        public int ViewModel_lb_Current_Distance_Content_Changed { get; }
+
         PublicVars publicVars = new PublicVars();
         public ButtonControls()
         {
@@ -17,6 +19,8 @@ namespace FiberPullStrain.CustomControl.view
             inBoxForce.MaxValue = publicVars.MAX_VALUE_FORCE;
             //lbCurrentDistance.Content = publicVars.CURRENT_DISTANCE;
             //lbCurrentForce.Content = publicVars.CURRENT_FORCE;
+            inBoxDistance.tbPlaceHolder.Text = "input distance";
+            inBoxForce.tbPlaceHolder.Text = "input Force";
         }
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
@@ -25,8 +29,17 @@ namespace FiberPullStrain.CustomControl.view
 
         private void btStart_Click(object sender, RoutedEventArgs e)
         {
-            if(_mainwindow.viewModel.IsRunning) {  }
-            else { }
+            if(_mainwindow.viewModel.IsRunning) 
+            {
+                _mainwindow.serialCommunication.myPort.WriteLine(
+                    publicVars.HOST_CMD_STOP_MOTOR.ToString());
+            }
+            else 
+            {
+                string _cmd = "m" + (Decimal.Parse(inBoxDistance.inputBox.Text) *
+                    publicVars.MOTOR_SCALE).ToString();
+                _mainwindow.serialCommunication.myPort.WriteLine(_cmd);
+            }
             _mainwindow.viewModel.IsRunning = !_mainwindow.viewModel.IsRunning;
             var mainWindow = Window.GetWindow(this) as MainWindow;
 
@@ -44,8 +57,7 @@ namespace FiberPullStrain.CustomControl.view
             //_mainwindow.viewModel.lb_Current_Distance = point.X.ToString("F2");
             //_mainwindow.viewModel.lb_Current_Force = point.Y.ToString("F2");
             //---------------------------------------------
-            string _cmd = "m" + (Decimal.Parse(inBoxDistance.inputBox.Text)* publicVars.MOTOR_SCALE).ToString();
-            _mainwindow.serialCommunication.myPort.WriteLine(_cmd);
+
         }
 
         private void cbmm_Click(object sender, RoutedEventArgs e)
@@ -132,7 +144,9 @@ namespace FiberPullStrain.CustomControl.view
 
         private void btnDistanceSetOrigin_Click(object sender, RoutedEventArgs e)
         {
-            _mainwindow.viewModel.lb_Current_Distance = "0.00";
+            //_mainwindow.viewModel.lb_Current_Distance = "0.00";
+            _mainwindow.serialCommunication.myPort.WriteLine(
+                publicVars.HOST_CMD_RESET_MOTOR_POSITION.ToString());
         }
 
         private void btnForceSetOrigin_Click(object sender, RoutedEventArgs e)

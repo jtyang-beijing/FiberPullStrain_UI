@@ -19,6 +19,7 @@ namespace FiberPull
             viewModel = new MainViewModel(serialCommunication);
             this.DataContext = viewModel;
             viewModel.lb_Current_Distance_Content_Changed += ViewModel_lb_Current_Distance_Content_Changed;
+            
         }
 
         Point newPoint = new Point();
@@ -28,6 +29,8 @@ namespace FiberPull
             float.TryParse(viewModel.lb_Current_Force, out float y);
             newPoint.X = x; newPoint.Y = y;
             AddPoint1(newPoint);
+            float.TryParse(myButtonControls.inBoxDistance.inputBox.Text, out float a);
+            if (a == x) viewModel.IsRunning = false;
         }
 
         //private int i = 0;

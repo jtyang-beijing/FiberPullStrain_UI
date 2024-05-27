@@ -16,6 +16,8 @@ namespace FiberPullStrain
 
         public string CURRENT_DISTANCE;
         public string CURRENT_FORCE;
+        public char HOST_CMD_STOP_MOTOR;
+        public char HOST_CMD_RESET_MOTOR_POSITION;
 
         public PublicVars()
         {
@@ -23,6 +25,8 @@ namespace FiberPullStrain
             MAX_VALUE_FORCE = "5000";
             CURRENT_DISTANCE = "0.00";
             CURRENT_FORCE = "0.00";
+            HOST_CMD_STOP_MOTOR = 'e';
+            HOST_CMD_RESET_MOTOR_POSITION = 'o';
         }
         private string max_value_distance;
 
