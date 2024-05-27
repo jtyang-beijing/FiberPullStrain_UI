@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 namespace FiberPullStrain.CustomControl.view
 {
     public partial class ClearableTextBox : UserControl
@@ -83,6 +84,12 @@ namespace FiberPullStrain.CustomControl.view
         private void inputBox_MouseEnter(object sender, MouseEventArgs e)
         {
             inputBox.Focus();
+            tbPlaceHolder.Foreground = new SolidColorBrush(Colors.Orange);
+        }
+
+        private void inputBox_MouseLeave(object sender, MouseEventArgs e)
+        {
+            tbPlaceHolder.Foreground = new SolidColorBrush(Colors.Gray);
         }
     }
 }

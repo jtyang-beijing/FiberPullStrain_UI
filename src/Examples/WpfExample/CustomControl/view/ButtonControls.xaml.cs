@@ -151,7 +151,8 @@ namespace FiberPullStrain.CustomControl.view
 
         private void btnForceSetOrigin_Click(object sender, RoutedEventArgs e)
         {
-            _mainwindow.viewModel.lb_Current_Force = "0.00";
+            _mainwindow.serialCommunication.myPort.WriteLine(
+                publicVars.HOST_CMD_RESET_LOAD_SENSOR.ToString());
         }
     }
 }
