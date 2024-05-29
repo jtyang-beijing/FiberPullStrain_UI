@@ -57,9 +57,9 @@ namespace FiberPullStrain.CustomControl.view
             else
             {
                 tbPlaceHolder.Visibility = System.Windows.Visibility.Hidden;
-                if(!float.TryParse(inputBox.Text, out float v))
+                if (inputBox.Text !="-" && !float.TryParse(inputBox.Text, out float v))
                 {
-                    inputBox.Text="Invalid";
+                    inputBox.Text = "Invalid";
                 }
             }
             /*

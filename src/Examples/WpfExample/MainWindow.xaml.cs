@@ -60,6 +60,10 @@ namespace FiberPull
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             await serialCommunication.SearchAllCOMports();
+            if(serialCommunication.myPort.IsOpen) 
+            { 
+                serialCommunication.myPort.WriteLine("p"); 
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

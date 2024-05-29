@@ -16,14 +16,20 @@ namespace FiberPullStrain.CustomControl.view
             InitializeComponent() ;
             // initialized max value of input box. 
             inBoxDistance.MaxValue = publicVars.MAX_VALUE_DISTANCE;
+            inBoxDistance.MinValue = "-" + publicVars.MAX_VALUE_DISTANCE;
             inBoxForce.MaxValue = publicVars.MAX_VALUE_FORCE;
-            //lbCurrentDistance.Content = publicVars.CURRENT_DISTANCE;
-            //lbCurrentForce.Content = publicVars.CURRENT_FORCE;
+
             inBoxDistance.tbPlaceHolder.Text = "input distance";
             inBoxForce.tbPlaceHolder.Text = "input Force";
         }
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
+            if(_mainwindow.serialCommunication.myPort.IsOpen)
+            {
+                _mainwindow.serialCommunication.myPort.DiscardInBuffer();
+                _mainwindow.serialCommunication.myPort.DiscardOutBuffer();
+                _mainwindow.serialCommunication.myPort.Close();
+            }
             App.Current.Shutdown();
         }
 
@@ -33,6 +39,7 @@ namespace FiberPullStrain.CustomControl.view
             {
                 _mainwindow.serialCommunication.myPort.WriteLine(
                     publicVars.HOST_CMD_STOP_MOTOR.ToString());
+                _mainwindow.viewModel.IsRunning = true;
             }
             else 
             {
@@ -41,22 +48,10 @@ namespace FiberPullStrain.CustomControl.view
                 _mainwindow.serialCommunication.myPort.WriteLine(_cmd);
             }
             _mainwindow.viewModel.IsRunning = !_mainwindow.viewModel.IsRunning;
-            var mainWindow = Window.GetWindow(this) as MainWindow;
+            float.TryParse(_mainwindow.viewModel.lb_Current_Distance, out float x);
+            float.TryParse(inBoxDistance.inputBox.Text, out float a);
+            if (a == x) _mainwindow.viewModel.IsRunning = false;
 
-            // main functions ----------------------------
-            Point point = new Point();
-            point.X = mainWindow.Left;
-            point.Y = mainWindow.Top;
-            if (mainWindow != null)
-            {
-                //mainWindow.infobar.Text = "Adding new data point...";
-                //mainWindow.AddPoint1(point);
-            }
-            //lbCurrentDistance.Content = point.X.ToString("F2");
-            //lbCurrentForce.Content = point.Y.ToString("F2");   
-            //_mainwindow.viewModel.lb_Current_Distance = point.X.ToString("F2");
-            //_mainwindow.viewModel.lb_Current_Force = point.Y.ToString("F2");
-            //---------------------------------------------
 
         }
 
