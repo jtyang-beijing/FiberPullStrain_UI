@@ -61,7 +61,7 @@ namespace FiberPullStrain
                     try
                     {
                         int i = 0;
-                        while (!handshakesucceed && i < 10)
+                        while (!handshakesucceed && i < 3)
                         {
                             if (myPort.BytesToRead > 0)
                             {
@@ -87,7 +87,7 @@ namespace FiberPullStrain
                             myPort.WriteLine("h");
                             i++;
                             DataReceived?.Invoke(this, $"Trying Hand shaking with {myPort.PortName} ... {i.ToString()}");
-                            await Task.Delay(200);
+                            await Task.Delay(1000);
                         }
                         if (!handshakesucceed)
                         {
