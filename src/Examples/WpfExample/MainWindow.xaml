@@ -18,7 +18,7 @@
                     <RowDefinition Height="20"/>
                 </Grid.RowDefinitions>
                 <!-- First row Menu bar -->
-                <CustomControl:menuItems Background="Transparent"
+                <CustomControl:menuItems x:Name="myMenuItmes" Background="Transparent"
                                          VerticalAlignment="Top" />
                 <!-- Second row, short cut buttons and Graph -->
                 <Grid Grid.Row="1">

@@ -3,6 +3,7 @@ using FiberPullStrain;
 using FiberPullStrain.CustomControl.view;
 using System;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace FiberPull
 {
@@ -13,6 +14,7 @@ namespace FiberPull
         public MainWindow() {
             InitializeComponent();
             myButtonControls._mainwindow = this;
+            myMenuItmes._mainWindow = this;
             CartGraph.Graph = ScatterGraphGenerator.GenerateScatterGraph();
             //CartGraph.Render += AddPoint;
             serialCommunication = new SerialCommunication();
@@ -60,17 +62,16 @@ namespace FiberPull
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             await serialCommunication.SearchAllCOMports();
-            if(serialCommunication.myPort.IsOpen) 
-            { 
-                serialCommunication.myPort.WriteLine("p"); 
-            }
+            //if (serialCommunication.myPort.IsOpen)
+            //{
+            //    serialCommunication.myPort.WriteLine("p");
+            //}
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //if (serialCommunication.myPort.IsOpen) serialCommunication.myPort.Close();
-            //myButtonControls._mainwindow.Close();
-            //App.Current.Shutdown();
+            if (serialCommunication.myPort.IsOpen) 
+                serialCommunication.myPort.Close();
         }
         //
         // private void RenderLeftControl(TimeSpan deltaTime) {

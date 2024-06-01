@@ -1,4 +1,6 @@
 ﻿using FiberPull;
+using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -6,9 +8,11 @@ namespace FiberPullStrain.CustomControl.view
 {
     public partial class menuItems : UserControl
     {
+        public MainWindow _mainWindow { get; set; }
         public menuItems()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+            
         }
 
         private void mnExit_Click(object sender, RoutedEventArgs e)
@@ -31,6 +35,23 @@ namespace FiberPullStrain.CustomControl.view
                 Height = 500
             };
             about.Show();
+        }
+
+        private async void mnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            if (_mainWindow.serialCommunication.myPort.IsOpen)
+            {
+                try
+                {
+                    _mainWindow.serialCommunication.myPort.Close();
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            await Task.Delay(300);
+            await _mainWindow.serialCommunication.SearchAllCOMports();
         }
     }
 }

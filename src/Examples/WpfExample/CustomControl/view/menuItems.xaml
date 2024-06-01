@@ -25,7 +25,8 @@
             </MenuItem>
             <MenuItem Header="Setup" Margin="5">
                 <MenuItem x:Name="mnSearch" Header="Search Stage" Margin="5"
-                          Background="Transparent" Foreground="Black"/>
+                          Background="Transparent" Foreground="Black"
+                          Click="mnSearch_Click"/>
                 <MenuItem x:Name="mnSystemSetup" Header="System Setup" Margin="5"
                           Background="Transparent" Foreground="Black"/>
             </MenuItem>

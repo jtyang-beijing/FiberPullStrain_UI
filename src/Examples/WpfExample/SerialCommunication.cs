@@ -61,14 +61,25 @@ namespace FiberPullStrain
                     try
                     {
                         int i = 0;
-                        while (!handshakesucceed && i < 2)
+                        while (!handshakesucceed && i < 3)
                         {
+                            if(i==2) // reset serial port.
+                            {
+                                myPort.DtrEnable = true;
+                                DataReceived?.Invoke(this, $"Trying to reset {myPort.PortName}, please wait...");
+                                await Task.Delay(500);
+                                myPort.DtrEnable = false;
+                                DataReceived?.Invoke(this, $"Reset {myPort.PortName} in processing, please wait...");
+                                await Task.Delay(5000);
+                            }
                             myPort.DiscardOutBuffer();
+                            //myPort.DiscardInBuffer();
+                            //await Task.Delay(200);
                             myPort.WriteLine("h");
                             var stattime = DateTime.UtcNow;
                             while (myPort.BytesToRead <= 0) // every try wait 1 second...
                             {
-                                if ((DateTime.UtcNow - stattime).TotalMilliseconds > 1000) break;
+                                if ((DateTime.UtcNow - stattime).TotalMilliseconds > 2000) break;
                                 await Task.Delay(50);
                             }
                             if (myPort.BytesToRead > 0)
@@ -96,7 +107,7 @@ namespace FiberPullStrain
                         if (!handshakesucceed)
                         {
                             myPort.Close();
-                            DataReceived?.Invoke(this, "No instrument found."); 
+                            DataReceived?.Invoke(this, $"No instrument found on {myPort.PortName}."); 
                         }
 
                     }
